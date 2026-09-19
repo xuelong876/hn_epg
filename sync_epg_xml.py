@@ -1,5 +1,6 @@
 import xml.etree.ElementTree as ET
 import gzip
+import requests
 
 # ========== 1. 目标频道列表（来自 YD8M.txt） ==========
 TARGET_CHANNELS = [
@@ -21,12 +22,15 @@ TARGET_CHANNELS = [
     "CCTV风云剧场", "CCTV世界地理", "CCTV卫生健康", "CCTV文化精品",
     "三门峡", "梨园频道",
 ]
+EPG_URL = "https://github.com/mytv-android/myEPG/raw/refs/heads/master/output/epg.xml"
+r = requests.get(EPG_URL, timeout=120)
+r.raise_for_status()                       # 4xx/5xx 直接抛异常
 
-
+mytv_epg = r.content                       # bytes
 # ========== 3. 解析 EPG.xml ==========
 print("正在解析 EPG.xml ...")
-tree = ET.parse("epg.xml")          
-root = tree.getroot()
+root = ET.formatstring(mytv_epg)          
+
 
 # 建立：channel id -> 归一化后的 display-name 列表
 channel_id_to_names = {}
