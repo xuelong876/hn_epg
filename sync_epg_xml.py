@@ -29,7 +29,7 @@ r.raise_for_status()                       # 4xx/5xx 直接抛异常
 mytv_epg = r.content                       # bytes
 # ========== 3. 解析 EPG.xml ==========
 print("正在解析 EPG.xml ...")
-root = ET.formatstring(mytv_epg)          
+root = ET.fromstring(mytv_epg)          
 
 
 # 建立：channel id -> 归一化后的 display-name 列表
