@@ -71,6 +71,9 @@ jobs:
 
       # 8. 提交并推送到 Gitee
       - name: Push to Gitee
+        env:
+          GITEE_USER: xuelong88
+          GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
         if: steps.check.outputs.changed == 'true'
         run: |
           cd repo
