@@ -73,5 +73,5 @@ jobs:
         if: steps.check.outputs.changed == 'true'
         run: |
           cd repo
-          git commit -m "Auto sync EPG $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git commit -m "github Auto sync EPG $(date -u +'%Y-%m-%d %H:%M UTC')"
           git push origin HEAD:master
