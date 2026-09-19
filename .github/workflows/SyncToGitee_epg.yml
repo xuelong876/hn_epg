@@ -75,4 +75,4 @@ jobs:
         run: |
           cd repo
           git commit -m "github Auto sync EPG $(date -u +'%Y-%m-%d %H:%M UTC')"
-          git push origin HEAD:master
+          git push "https://${GITEE_USER}:${GITEE_TOKEN}@gitee.com/xuelong88/hn_epg.git" HEAD:master
