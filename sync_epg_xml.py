@@ -18,8 +18,8 @@ TARGET_CHANNELS = [
     "河南电视剧", "河南都市", "河南法治", "河南民生", "河南新闻", "河南公共",
     "动漫秀场", "乐游", "都市剧场",
     "CHC影迷电影", "CHC动作电影", "CHC家庭影院",
-    "CCTV兵器科技", "CCTV第一剧场", "CCTV怀旧剧场", "CCTV风云音乐",
-    "CCTV风云剧场", "CCTV世界地理", "CCTV卫生健康", "CCTV文化精品",
+    "兵器科技", "第一剧场", "怀旧剧场", "风云音乐",
+    "风云剧场", "世界地理", "卫生健康", "文化精品",
     "三门峡", "梨园频道",
 ]
 EPG_URL = "https://github.com/mytv-android/myEPG/raw/refs/heads/master/output/epg.xml"
