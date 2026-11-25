@@ -28,5 +28,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add "$FILE"
-          git diff --cached --quiet || git commit -m "chore: keepalive $(date -u +'%Y-%m-%d %H:%M:%S') UTC"
+          git diff --cached --quiet || git commit -m "激活仓库时间： $(date -u +'%Y-%m-%d %H:%M:%S') UTC"
           git push
