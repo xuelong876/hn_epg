@@ -1,0 +1,32 @@
+name: Keepalive Push (monthly)
+
+on:
+  schedule:
+    - cron: "0 0 1 * *"   # 每月 1 日 00:00 UTC
+  workflow_dispatch:       # 支持手动触发
+
+jobs:
+  push-keepalive:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Update keepalive.txt and push
+        run: |
+          FILE="keepalive.txt"
+
+          echo "Running monthly keepalive job..."
+
+          # 直接写入当前时间（UTC），不读取文件旧内容
+          date -u +'%Y-%m-%d %H:%M:%S' > "$FILE"
+          echo "Updated $FILE: $(cat $FILE)"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add "$FILE"
+          git diff --cached --quiet || git commit -m "chore: keepalive $(date -u +'%Y-%m-%d %H:%M:%S') UTC"
+          git push
